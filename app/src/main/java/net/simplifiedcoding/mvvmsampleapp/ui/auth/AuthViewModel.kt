@@ -43,7 +43,9 @@ class AuthViewModel(
                 authListener?.onFailure(e.message!!)
             }catch (e: NoInternetException){
                 authListener?.onFailure(e.message!!)
-            }
+            } catch (e: SocketTimeoutException){
+                        authListener?.onFailure("Network is unreachable")
+                    }
         }
 
     }
